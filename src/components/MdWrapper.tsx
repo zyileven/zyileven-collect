@@ -67,6 +67,7 @@ function MdWrapper({ content }: {
           },
           // 图片处理组件：确保最大宽度不超过容器100%
           img: ({ src, alt, title, ...props }) => (
+            // eslint-disable-next-line @next/next/no-img-element
             <img 
               src={src as string} 
               alt={alt || ''}

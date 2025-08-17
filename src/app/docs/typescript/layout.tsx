@@ -3,18 +3,11 @@ import { Input } from '@/components/ui/input';
 import { Sidebar, SidebarHeader, SidebarProvider, SidebarRail } from '@/components/ui/sidebar';
 import type { ReactNode } from 'react';
 import { Package, Search } from 'lucide-react';
+import { TSFileMap } from '@/components/Navbar';
 
 type LayoutProps = {
   children: ReactNode;
 };
-
-export const TSFileMap = {
-  "base_types": "类型基础",
-  "function_types": "函数类型",
-  "generics": "泛型",
-  "utility_types": "工具类型",
-  "type_operate": "类型操作",
-}
 
 function Layout({ children }: LayoutProps) {
     const menuData = [

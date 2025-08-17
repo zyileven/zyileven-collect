@@ -3,14 +3,11 @@ import { Input } from '@/components/ui/input';
 import { Sidebar, SidebarHeader, SidebarProvider, SidebarRail } from '@/components/ui/sidebar';
 import type { ReactNode } from 'react';
 import { Package, Search } from 'lucide-react';
+import { HTTPFileMap } from '@/components/Navbar';
 
 type LayoutProps = {
   children: ReactNode;
 };
-
-export const HTTPFileMap = {
-  "http-protocol": "http网络协议"
-}
 
 function Layout({ children }: LayoutProps) {
     const menuData = [

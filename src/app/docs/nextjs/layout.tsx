@@ -3,18 +3,11 @@ import { Input } from '@/components/ui/input';
 import { Sidebar, SidebarHeader, SidebarProvider, SidebarRail } from '@/components/ui/sidebar';
 import type { ReactNode } from 'react';
 import { Package, Search } from 'lucide-react';
+import { NextFileMap } from '@/components/Navbar';
 
 type LayoutProps = {
   children: ReactNode;
 };
-
-export const NextFileMap = {
-  "router": "路由",
-  "router-handler": "路由处理程序",
-  "next-link": "Next的Link优化",
-  "next-image": "Next的Image优化"
-}
-
 
 function Layout({ children }: LayoutProps) {
     const menuData = [

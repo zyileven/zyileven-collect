@@ -3,15 +3,11 @@ import { Input } from '@/components/ui/input';
 import { Sidebar, SidebarHeader, SidebarProvider, SidebarRail } from '@/components/ui/sidebar';
 import type { ReactNode } from 'react';
 import { Package, Search } from 'lucide-react';
+import { EngineerFileMap } from '@/components/Navbar';
 
 type LayoutProps = {
   children: ReactNode;
 };
-
-export const EngineerFileMap = {
-  "cors": "跨域",
-  "webpack": "Webpack",
-}
 
 function Layout({ children }: LayoutProps) {
     const menuData = [
