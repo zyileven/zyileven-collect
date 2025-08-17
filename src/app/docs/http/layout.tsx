@@ -8,7 +8,7 @@ type LayoutProps = {
   children: ReactNode;
 };
 
-const FileMap = {
+export const HTTPFileMap = {
   "http-protocol": "http网络协议"
 }
 
@@ -16,9 +16,9 @@ function Layout({ children }: LayoutProps) {
     const menuData = [
       {
         title: "HTML",
-        items: Object.keys(FileMap).map(key => {
+        items: Object.keys(HTTPFileMap).map(key => {
           return {
-            title: FileMap[key] ?? key,
+            title: HTTPFileMap[key] ?? key,
             key: key,
             url: `/docs/http/${key}`,
           }

@@ -8,7 +8,7 @@ type LayoutProps = {
   children: ReactNode;
 };
 
-const FileMap = {
+export const JSFileMap = {
   "array": "数组方法",
   "bind-this": "this绑定",
   "bom": "浏览器对象模型",
@@ -31,9 +31,9 @@ function Layout({ children }: LayoutProps) {
     const menuData = [
       {
         title: "Javascript",
-        items: Object.keys(FileMap).map(key => {
+        items: Object.keys(JSFileMap).map(key => {
           return {
-            title: FileMap[key] ?? key,
+            title: JSFileMap[key] ?? key,
             key: key,
             url: `/docs/js/${key}`,
           }

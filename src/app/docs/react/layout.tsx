@@ -8,13 +8,10 @@ type LayoutProps = {
   children: ReactNode;
 };
 
-const FileMap = {
+export const ReactFileMap = {
   "diff": "diff算法",
   "fiber": "fiber架构",
   "server-components": "RSC 服务端组件",
-}
-
-const APIMap = {
   "forwardRef": "forwardRef()",
   "useDefferedValue": "useDefferedValue()",
   "useLayoutEffect": "useLayoutEffect()",
@@ -27,24 +24,14 @@ function Layout({ children }: LayoutProps) {
     const menuData = [
       {
         title: "React 框架",
-        items: Object.keys(FileMap).map(key => {
+        items: Object.keys(ReactFileMap).map(key => {
           return {
-            title: FileMap[key] ?? key,
+            title: ReactFileMap[key] ?? key,
             key: key,
             url: `/docs/react/${key}`,
           }
         })
       },
-      {
-        title: "React API",
-        items: Object.keys(APIMap).map(key => {
-          return {
-            title: FileMap[key] ?? key,
-            key: key,
-            url: `/docs/react/${key}`,
-          }
-        })
-      }
     ]
 
   return (

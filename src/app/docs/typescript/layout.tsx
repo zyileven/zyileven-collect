@@ -8,7 +8,7 @@ type LayoutProps = {
   children: ReactNode;
 };
 
-const FileMap = {
+export const TSFileMap = {
   "base_types": "类型基础",
   "function_types": "函数类型",
   "generics": "泛型",
@@ -20,9 +20,9 @@ function Layout({ children }: LayoutProps) {
     const menuData = [
       {
         title: "TypeScript",
-        items: Object.keys(FileMap).map(key => {
+        items: Object.keys(TSFileMap).map(key => {
           return {
-            title: FileMap[key] ?? key,
+            title: TSFileMap[key] ?? key,
             key: key,
             url: `/docs/typescript/${key}`,
           }

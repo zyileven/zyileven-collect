@@ -8,7 +8,7 @@ type LayoutProps = {
   children: ReactNode;
 };
 
-const FileMap = {
+export const EngineerFileMap = {
   "cors": "跨域",
   "webpack": "Webpack",
 }
@@ -17,9 +17,9 @@ function Layout({ children }: LayoutProps) {
     const menuData = [
       {
         title: "前端工程化",
-        items: Object.keys(FileMap).map(key => {
+        items: Object.keys(EngineerFileMap).map(key => {
           return {
-            title: FileMap[key] ?? key,
+            title: EngineerFileMap[key] ?? key,
             key: key,
             url: `/docs/engineer/${key}`,
           }

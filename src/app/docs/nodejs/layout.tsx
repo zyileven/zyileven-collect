@@ -8,7 +8,7 @@ type LayoutProps = {
   children: ReactNode;
 };
 
-const FileMap = {
+export const NodeFileMap = {
   "node": "Node基础",
   "readline": "Node的命令行输入"
 }
@@ -17,9 +17,9 @@ function Layout({ children }: LayoutProps) {
     const menuData = [
       {
         title: "Node",
-        items: Object.keys(FileMap).map(key => {
+        items: Object.keys(NodeFileMap).map(key => {
           return {
-            title: FileMap[key] ?? key,
+            title: NodeFileMap[key] ?? key,
             key: key,
             url: `/docs/nodejs/${key}`,
           }

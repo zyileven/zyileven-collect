@@ -8,7 +8,7 @@ type LayoutProps = {
   children: ReactNode;
 };
 
-const FileMap = {
+export const HTMLFileMap = {
   "input": "Input 元素",
 }
 
@@ -16,9 +16,9 @@ function Layout({ children }: LayoutProps) {
     const menuData = [
       {
         title: "HTML",
-        items: Object.keys(FileMap).map(key => {
+        items: Object.keys(HTMLFileMap).map(key => {
           return {
-            title: FileMap[key] ?? key,
+            title: HTMLFileMap[key] ?? key,
             key: key,
             url: `/docs/html/${key}`,
           }

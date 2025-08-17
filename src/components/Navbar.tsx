@@ -3,7 +3,21 @@
 import * as React from "react"
 import Link from "next/link"
 import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from "lucide-react"
-
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { Menu } from "lucide-react"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -14,8 +28,27 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { Zap } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile"
+import { HTMLFileMap } from "@/app/docs/html/layout"
+import { JSFileMap } from "@/app/docs/js/layout"
+import { CSSFileMap } from "@/app/docs/css/layout"
+import { DesignFileMap } from "@/app/docs/design-pattern/layout"
+import { ReactFileMap } from "@/app/docs/react/layout"
+import { NextFileMap } from "@/app/docs/nextjs/layout"
+import { TSFileMap } from "@/app/docs/typescript/layout"
+import { EngineerFileMap } from "@/app/docs/engineer/layout"
+import { NodeFileMap } from "@/app/docs/nodejs/layout"
+import { HTTPFileMap } from "@/app/docs/http/layout"
+
 
 export default function Navbar() {
+
+  const isMobileEnd = useIsMobile();
+
+  return isMobileEnd ? <MobileNavBars /> : <PCNavbar />
+}
+
+function PCNavbar() {
 
   return (
     <div className="w-full border-b-1 h-[60px] mx-0 shadow-md flex justify-around items-center gap-10">
@@ -58,34 +91,34 @@ export default function Navbar() {
             <NavigationMenuContent>
               <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                 <ListItem title={"HTML"} href={"/docs/html"} >
-                  {"Html"}
+                  {"HTML笔记"}
                 </ListItem>
                 <ListItem title={"Javascript"} href={"/docs/js"} >
-                  {"Javascript"}
+                  {"Javascript笔记"}
                 </ListItem>
                 <ListItem title={"CSS"} href={"/docs/css"} >
-                  {"样式"}
+                  {"CSS样式笔记"}
                 </ListItem>
                 <ListItem title={"Design Pattern"} href={"/docs/design-pattern"} >
-                  {"设计模式"}
+                  {"设计模式笔记"}
                 </ListItem>
                 <ListItem title={"React"} href={"/docs/react"} >
-                  {"React框架"}
+                  {"React框架笔记"}
                 </ListItem>
                 <ListItem title={"Next.js"} href={"/docs/nextjs"} >
-                  {"Next.js框架"}
+                  {"Next.js框架笔记"}
                 </ListItem>
                 <ListItem title={"TypeScript"} href={"/docs/typescript"} >
-                  {"TypeScript"}
+                  {"TypeScript笔记"}
                 </ListItem>
                 <ListItem title={"Engineer"} href={"/docs/engineer"} >
-                  {"工程化"}
+                  {"工程化笔记"}
                 </ListItem>
                 <ListItem title={"Node"} href={"/docs/nodejs"} >
-                  {"NodeJS"}
+                  {"Node.js笔记"}
                 </ListItem>
                 <ListItem title={"HTTP"} href={"/docs/http"} >
-                  {"http 网络协议"}
+                  {"HTTP 网络协议笔记"}
                 </ListItem>
               </ul>
             </NavigationMenuContent>
@@ -196,5 +229,238 @@ function ListItem({
         </Link>
       </NavigationMenuLink>
     </li>
+  )
+}
+
+function MobileNavBars() {
+  return (
+    <div className="w-full border-b-1 h-[60px] mx-0 shadow-md flex justify-between items-center gap-10">
+      <Link href={"/"}><Zap className="mx-5 cursor-pointer" /></Link>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <div className="cursor-pointer pr-[2rem]">
+            <Menu />
+          </div>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent className="w-56" align="start">
+          <DropdownMenuItem>Home</DropdownMenuItem>
+          <DropdownMenuSeparator />
+          <DropdownMenuLabel>笔记文档</DropdownMenuLabel>
+          <DropdownMenuGroup>
+            {/* HTML */}
+            <DropdownMenuSub>
+              <DropdownMenuSubTrigger>
+                <Link title={"HTML"} href={"/docs/html"} >
+                  {"HTML笔记"}
+                </Link>
+              </DropdownMenuSubTrigger>
+              <DropdownMenuPortal>
+                <DropdownMenuSubContent>
+                  {
+                    Object.keys(HTMLFileMap).map(key => {
+                      return <DropdownMenuItem key={key}>
+                        <Link title={"HTML"} href={`/docs/html/${key}`} >
+                          {HTMLFileMap[key]}
+                        </Link>
+                      </DropdownMenuItem>
+                    })
+                  }
+                </DropdownMenuSubContent>
+              </DropdownMenuPortal>
+            </DropdownMenuSub>
+            {/* Javascript */}
+            <DropdownMenuSub>
+              <DropdownMenuSubTrigger>
+                <Link title={"Javascript"} href={"/docs/js"} >
+                  {"Javascript笔记"}
+                </Link>
+              </DropdownMenuSubTrigger>
+              <DropdownMenuPortal>
+                <DropdownMenuSubContent>
+                  {
+                    Object.keys(JSFileMap).map(key => {
+                      return <DropdownMenuItem key={key}>
+                        <Link title={"Javascript"} href={`/docs/js/${key}`} >
+                          {JSFileMap[key]}
+                        </Link>
+                      </DropdownMenuItem>
+                    })
+                  }
+                </DropdownMenuSubContent>
+              </DropdownMenuPortal>
+            </DropdownMenuSub>
+            {/* CSS */}
+            <DropdownMenuSub>
+              <DropdownMenuSubTrigger>
+                <Link title={"CSS"} href={"/docs/css"} >
+                  {"CSS样式笔记"}
+                </Link>
+              </DropdownMenuSubTrigger>
+              <DropdownMenuPortal>
+                <DropdownMenuSubContent>
+                  {
+                    Object.keys(CSSFileMap).map(key => {
+                      return <DropdownMenuItem key={key}>
+                        <Link title={"CSS"} href={`/docs/css/${key}`} >
+                          {CSSFileMap[key]}
+                        </Link>
+                      </DropdownMenuItem>
+                    })
+                  }
+                </DropdownMenuSubContent>
+              </DropdownMenuPortal>
+            </DropdownMenuSub>
+            {/* Design */}
+            <DropdownMenuSub>
+              <DropdownMenuSubTrigger>
+                <Link title={"Design Pattern"} href={"/docs/design-pattern"} >
+                  {"设计模式笔记"}
+                </Link>
+              </DropdownMenuSubTrigger>
+              <DropdownMenuPortal>
+                <DropdownMenuSubContent>
+                  {
+                    Object.keys(DesignFileMap).map(key => {
+                      return <DropdownMenuItem key={key}>
+                        <Link title={"Design Pattern"} href={`/docs/design-pattern/${key}`} >
+                          {DesignFileMap[key]}
+                        </Link>
+                      </DropdownMenuItem>
+                    })
+                  }
+                </DropdownMenuSubContent>
+              </DropdownMenuPortal>
+            </DropdownMenuSub>
+            {/* React.js */}
+            <DropdownMenuSub>
+              <DropdownMenuSubTrigger>
+                <Link title={"React.js"} href={"/docs/react"} >
+                  {"React框架笔记"}
+                </Link>
+              </DropdownMenuSubTrigger>
+              <DropdownMenuPortal>
+                <DropdownMenuSubContent>
+                  {
+                    Object.keys(ReactFileMap).map(key => {
+                      return <DropdownMenuItem key={key}>
+                        <Link title={"React.js"} href={`/docs/react/${key}`} >
+                          {ReactFileMap[key]}
+                        </Link>
+                      </DropdownMenuItem>
+                    })
+                  }
+                </DropdownMenuSubContent>
+              </DropdownMenuPortal>
+            </DropdownMenuSub>
+            {/* Next.js */}
+            <DropdownMenuSub>
+              <DropdownMenuSubTrigger>
+                <Link title={"Next.js"} href={"/docs/nextjs"} >
+                  {"Next.js框架笔记"}
+                </Link>
+              </DropdownMenuSubTrigger>
+              <DropdownMenuPortal>
+                <DropdownMenuSubContent>
+                  {
+                    Object.keys(NextFileMap).map(key => {
+                      return <DropdownMenuItem key={key}>
+                        <Link title={"Next.js"} href={`/docs/nextjs/${key}`} >
+                          {NextFileMap[key]}
+                        </Link>
+                      </DropdownMenuItem>
+                    })
+                  }
+                </DropdownMenuSubContent>
+              </DropdownMenuPortal>
+            </DropdownMenuSub>
+            {/* TypeScript */}
+            <DropdownMenuSub>
+              <DropdownMenuSubTrigger>
+                <Link title={"TypeScript"} href={"/docs/typescript"} >
+                  {"TypeScript笔记"}
+                </Link>
+              </DropdownMenuSubTrigger>
+              <DropdownMenuPortal>
+                <DropdownMenuSubContent>
+                  {
+                    Object.keys(TSFileMap).map(key => {
+                      return <DropdownMenuItem key={key}>
+                        <Link title={"TypeScript"} href={`/docs/typescript/${key}`} >
+                          {TSFileMap[key]}
+                        </Link>
+                      </DropdownMenuItem>
+                    })
+                  }
+                </DropdownMenuSubContent>
+              </DropdownMenuPortal>
+            </DropdownMenuSub>
+            {/* Engineer */}
+            <DropdownMenuSub>
+              <DropdownMenuSubTrigger>
+                <Link title={"Engineer"} href={"/docs/engineer"} >
+                  {"工程化笔记"}
+                </Link>
+              </DropdownMenuSubTrigger>
+              <DropdownMenuPortal>
+                <DropdownMenuSubContent>
+                  {
+                    Object.keys(EngineerFileMap).map(key => {
+                      return <DropdownMenuItem key={key}>
+                        <Link title={"Engineer"} href={`/docs/engineer/${key}`} >
+                          {EngineerFileMap[key]}
+                        </Link>
+                      </DropdownMenuItem>
+                    })
+                  }
+                </DropdownMenuSubContent>
+              </DropdownMenuPortal>
+            </DropdownMenuSub>
+            {/* Node.js */}
+            <DropdownMenuSub>
+              <DropdownMenuSubTrigger>
+                <Link title={"Node.js"} href={"/docs/nodejs"} >
+                  {"Node.js笔记"}
+                </Link>
+              </DropdownMenuSubTrigger>
+              <DropdownMenuPortal>
+                <DropdownMenuSubContent>
+                  {
+                    Object.keys(NodeFileMap).map(key => {
+                      return <DropdownMenuItem key={key}>
+                        <Link title={"Node.js"} href={`/docs/nodejs/${key}`} >
+                          {NodeFileMap[key]}
+                        </Link>
+                      </DropdownMenuItem>
+                    })
+                  }
+                </DropdownMenuSubContent>
+              </DropdownMenuPortal>
+            </DropdownMenuSub>
+            {/* HTTP */}
+            <DropdownMenuSub>
+              <DropdownMenuSubTrigger>
+                <Link title={"HTTP"} href={"/docs/http"} >
+                  {"HTTP 网络协议笔记"}
+                </Link>
+              </DropdownMenuSubTrigger>
+              <DropdownMenuPortal>
+                <DropdownMenuSubContent>
+                  {
+                    Object.keys(HTTPFileMap).map(key => {
+                      return <DropdownMenuItem key={key}>
+                        <Link title={"HTTP"} href={`/docs/http/${key}`} >
+                          {HTTPFileMap[key]}
+                        </Link>
+                      </DropdownMenuItem>
+                    })
+                  }
+                </DropdownMenuSubContent>
+              </DropdownMenuPortal>
+            </DropdownMenuSub>
+          </DropdownMenuGroup>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </div>
+
   )
 }

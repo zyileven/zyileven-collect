@@ -8,7 +8,7 @@ type LayoutProps = {
   children: ReactNode;
 };
 
-const FileMap = {
+export const DesignFileMap = {
   "command-pattern": "命令模式",
   "factory-pattern": "工厂模式",
   "middleware-pattern": "中间件模式",
@@ -23,9 +23,9 @@ function Layout({ children }: LayoutProps) {
     const menuData = [
       {
         title: "设计模式",
-        items: Object.keys(FileMap).map(key => {
+        items: Object.keys(DesignFileMap).map(key => {
           return {
-            title: FileMap[key] ?? key,
+            title: DesignFileMap[key] ?? key,
             key: key,
             url: `/docs/design-pattern/${key}`,
           }

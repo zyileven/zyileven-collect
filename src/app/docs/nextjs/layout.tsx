@@ -8,7 +8,7 @@ type LayoutProps = {
   children: ReactNode;
 };
 
-const FileMap = {
+export const NextFileMap = {
   "router": "路由",
   "router-handler": "路由处理程序",
   "next-link": "Next的Link优化",
@@ -20,9 +20,9 @@ function Layout({ children }: LayoutProps) {
     const menuData = [
       {
         title: "Next.js 框架",
-        items: Object.keys(FileMap).map(key => {
+        items: Object.keys(NextFileMap).map(key => {
           return {
-            title: FileMap[key] ?? key,
+            title: NextFileMap[key] ?? key,
             key: key,
             url: `/docs/nextjs/${key}`,
           }
