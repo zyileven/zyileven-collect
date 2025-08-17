@@ -1,3 +1,5 @@
+
+
 ## Vue3 初学
 
 ### 创建Vue3 项目的方式
@@ -390,6 +392,196 @@ createApp(App).mount('#app')
 **将功能集中之后用函数来管理，函数内部包含数据，方法，计算属性**
 
 ![img](https://raw.githubusercontent.com/zyileven/image-hosting-platform/master/src/2025/08/11/c5071f71bc1ecc26d3548701f07be414-4146605abc9c4b638863e9a3f2f1b001-tplv-k3u1fbpfcp-zoom-in-crop-mark-1512-0-0-0-eeba32.awebp)
+
+### 拉开序幕的 setup
+
+setup 是 vue3 中一个新的配置，值是一个函数，组件中所用的到的数据、方法、计算属性、监视等等，均是配置在 setup 中的。
+
+#### setup的特点
+
+- setup 函数返回的对象中的内容，可以直接在模板中使用；
+- setup 中访问 this 是 undefined；
+- setup 函数会在 beforeCreate 生命周期之前调用，领先于所有钩子
+-  setup 返回的如果是一个函数，那么这个函数将会是渲染函数。
+
+```vue
+<script lang="ts">
+export default {
+  name: 'Person',
+  setup() {
+    // 这些数据不是响应式的
+    let name = '张三'
+    let age = '18'
+    let tel = '12312341234'
+
+    const changeName = () => {
+      name = '李四'
+    }
+    const changeAge = () => {
+      age += 1
+    }
+    const showTel = () => {
+      alert(tel)
+    }
+
+    return {
+      renderName: name,
+      renderAge: age,
+      renderTel: tel,
+      changeName,
+      changeAge,
+      showTel,
+    }
+  },
+}
+</script>
+```
+
+data 中的数据和 setup 中的数据可以同时存在
+
+methods 中的方法可以和 setup 中的方法同时存在。
+
+data 中可以通过 this.name 的方式读取到 setup 中定义的变量，但是不能再 setup 中读取 data 中的数据的。
+
+#### setup语法躺
+
+为了简化 vue3 中的 setup 函数的代码可读性，添加了 setup 语法糖来优化：
+
+```vue
+<script lang="ts" setup>
+let name = '张三'
+let age = '18'
+let tel = '12312341234'
+
+const changeName = () => {
+  name = '李四'
+}
+const changeAge = () => {
+  age += 1
+}
+const showTel = () => {
+  alert(tel)
+}
+</script>
+```
+
+在 setup 语法糖中定义的变量和函数会直接暴露出去，而不需要手动 return 。
+
+> 如果对组件名字有自定义要求的，可以安装插件：
+>
+> `npm i vite-plugin-vue-setup-extend -D`
+>
+> 然后在 vite 中配置
+>
+> ```js
+> import VueSetupExtend from 'vite-plugin-vue-setup-extend';
+> 
+> export default defineConfig({
+>   plugins: [
+>     // ...
+>     VueSetupExtend()
+>     // ...
+>   ],
+>   resolve: {
+>     alias: {
+>       '@': fileURLToPath(new URL('./src', import.meta.url)),
+>     },
+>   },
+> })
+> ```
+>
+> 然后再在 script 中添加 name 属性来定义组件名称
+>
+> ```vue
+> <script lang="ts" setup name="custonComponentName">
+> // ...
+> </script>
+> ```
+>
+> 
+
+### 响应式数据
+
+#### ref 创建基本类型的响应式数据
+
+```vue
+<script lang="ts" setup name="Person">
+import { ref } from 'vue'
+
+let name = ref('张三')
+let age = ref(18);
+let tel = '12312341234'
+console.log('name:zzz', name)
+const changeName = () => {
+  name.value = '李四'
+}
+const changeAge = () => {
+  age.value += 1
+}
+const showTel = () => {
+  alert(tel)
+}
+</script>
+```
+
+通过 ref 包裹数据的方式，将 name 和 age 变为响应式的数据。此时 name 的结构是一个 RefImpl 的实例对象：
+
+![image-20250813上午102524547](https://raw.githubusercontent.com/zyileven/image-hosting-platform/master/src/2025/08/13/562bbdff3fdf890c07876f3358e60598-image-20250813上午102524547-ef8c0e.png)
+
+更新 ref 响应式数据时，需要通过 `xxx.value = "asdasd"` 中的 .value 的方式来更改。
+
+#### reactive 创建对象类型的响应式数据
+
+```vue
+<script lang="ts" setup name="Person">
+import { reactive } from 'vue'
+
+let car = reactive({
+  brand: '奔驰',
+  price: 100,
+})
+
+console.log("car:zzz", car);
+
+function changePrice() {
+  car.price += 10
+}
+</script>
+```
+
+通过 reactive 创建的响应式数据，此时 car 的结构如下：
+
+![image-20250813上午104120548](https://raw.githubusercontent.com/zyileven/image-hosting-platform/master/src/2025/08/13/bfb896df7e4e6d66cea09157ff97171d-image-20250813上午104120548-4466bc.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

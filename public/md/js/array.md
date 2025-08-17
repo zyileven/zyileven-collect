@@ -20,7 +20,7 @@ console.log(count) // 2
 console.log(colors) // ["red", "green"]
 ```
 
-#### `unshift()`在数组最前面天添加
+#### `unshift()`在数组最前面添加
 
 在数组开头添加任意多个值，然后返回新的数组长度
 
@@ -45,7 +45,7 @@ console.log(removed) // []
 
 首先会创建一个当前数组的副本，然后再把它的参数添加到副本末尾，最后返回这个新构建的数组，不会影响原始数组。
 
-⚠️注意：<span style="color: red">不变更原来的数组</span>
+⚠️注意：次操作不变更原来的数组
 
 ```js
 let colors = ["red", "green", "blue"];
