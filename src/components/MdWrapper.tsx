@@ -46,12 +46,23 @@ function MdWrapper({ content }: {
                 borderLeft: '4px solid #ccc',
                 margin: 6,
                 padding: 6,
-                paddingLeft: 16,
+                paddingLeft: "1rem",
                 color: '#666',
                 background: '#f9f9f9',
               }}>
                 {children}
               </blockquote>
+            );
+          },
+          ul({ children }) {
+            return (
+              <ul style={{
+                margin: 6,
+                padding: 6,
+                paddingLeft: "1rem",
+              }}>
+                {children}
+              </ul>
             );
           },
           // 图片处理组件：确保最大宽度不超过容器100%
@@ -85,7 +96,8 @@ function MdWrapper({ content }: {
                 style={atomDark}
                 language={language}
                 customStyle={{
-                  maxWidth: "100%"
+                  maxWidth: "100%",
+                  fontSize: "0.8rem",
                 }}
                 PreTag="div"
               >
