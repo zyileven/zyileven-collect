@@ -3,14 +3,13 @@ import { Input } from '@/components/ui/input';
 import { Sidebar, SidebarHeader, SidebarProvider, SidebarRail } from '@/components/ui/sidebar';
 import type { ReactNode } from 'react';
 import { Package, Search } from 'lucide-react';
+import { HTMLFileMap } from '@/constants/menuMaps';
 
 type LayoutProps = {
   children: ReactNode;
 };
 
-export const HTMLFileMap = {
-  "input": "Input 元素",
-}
+
 
 function Layout({ children }: LayoutProps) {
     const menuData = [

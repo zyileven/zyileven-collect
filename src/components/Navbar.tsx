@@ -11,7 +11,6 @@ import {
   DropdownMenuLabel,
   DropdownMenuPortal,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
@@ -29,16 +28,16 @@ import {
 } from "@/components/ui/navigation-menu"
 import { Zap } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile"
-import { HTMLFileMap } from "@/app/docs/html/layout"
-import { JSFileMap } from "@/app/docs/js/layout"
-import { CSSFileMap } from "@/app/docs/css/layout"
-import { DesignFileMap } from "@/app/docs/design-pattern/layout"
-import { ReactFileMap } from "@/app/docs/react/layout"
-import { NextFileMap } from "@/app/docs/nextjs/layout"
-import { TSFileMap } from "@/app/docs/typescript/layout"
-import { EngineerFileMap } from "@/app/docs/engineer/layout"
-import { NodeFileMap } from "@/app/docs/nodejs/layout"
-import { HTTPFileMap } from "@/app/docs/http/layout"
+import { HTMLFileMap } from "@/constants/menuMaps"
+import { JSFileMap } from "@/constants/menuMaps"
+import { CSSFileMap } from "@/constants/menuMaps"
+import { DesignFileMap } from "@/constants/menuMaps"
+import { ReactFileMap } from "@/constants/menuMaps"
+import { NextFileMap } from "@/constants/menuMaps"
+import { TSFileMap } from "@/constants/menuMaps"
+import { EngineerFileMap } from "@/constants/menuMaps"
+import { NodeFileMap } from "@/constants/menuMaps"
+import { HTTPFileMap } from "@/constants/menuMaps"
 
 
 export default function Navbar() {

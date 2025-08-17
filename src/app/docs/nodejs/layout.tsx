@@ -3,15 +3,13 @@ import { Input } from '@/components/ui/input';
 import { Sidebar, SidebarHeader, SidebarProvider, SidebarRail } from '@/components/ui/sidebar';
 import type { ReactNode } from 'react';
 import { Package, Search } from 'lucide-react';
+import { NodeFileMap } from '@/constants/menuMaps';
 
 type LayoutProps = {
   children: ReactNode;
 };
 
-export const NodeFileMap = {
-  "node": "Node基础",
-  "readline": "Node的命令行输入"
-}
+
 
 function Layout({ children }: LayoutProps) {
     const menuData = [

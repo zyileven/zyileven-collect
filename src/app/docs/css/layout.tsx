@@ -3,19 +3,11 @@ import { Input } from '@/components/ui/input';
 import { Sidebar, SidebarHeader, SidebarProvider, SidebarRail } from '@/components/ui/sidebar';
 import type { ReactNode } from 'react';
 import { Package, Search } from 'lucide-react';
+import { CSSFileMap } from '@/constants/menuMaps';
 
 type LayoutProps = {
   children: ReactNode;
 };
-
-export const CSSFileMap = {
-  "align-center": "居中的方法",
-  "bfc": "BFC块级样式",
-  "size": "浏览器的尺寸单位",
-  "visibility": "元素隐藏方式",
-  "BEM": "BEM规范",
-  "PostCSS": "PostCSS 后处理器"
-}
 
 function Layout({ children }: LayoutProps) {
     const menuData = [

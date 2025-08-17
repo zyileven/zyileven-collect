@@ -3,22 +3,11 @@ import { Input } from '@/components/ui/input';
 import { Sidebar, SidebarHeader, SidebarProvider, SidebarRail } from '@/components/ui/sidebar';
 import type { ReactNode } from 'react';
 import { Package, Search } from 'lucide-react';
+import { ReactFileMap } from '@/constants/menuMaps';
 
 type LayoutProps = {
   children: ReactNode;
 };
-
-export const ReactFileMap = {
-  "diff": "diff算法",
-  "fiber": "fiber架构",
-  "server-components": "RSC 服务端组件",
-  "forwardRef": "forwardRef()",
-  "useDefferedValue": "useDefferedValue()",
-  "useLayoutEffect": "useLayoutEffect()",
-  "startTransition": "startTransition()",
-  "use": "use()",
-  "lazy": "lazy()",
-}
 
 function Layout({ children }: LayoutProps) {
     const menuData = [

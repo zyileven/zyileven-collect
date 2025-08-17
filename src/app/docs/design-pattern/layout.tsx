@@ -3,21 +3,13 @@ import { Input } from '@/components/ui/input';
 import { Sidebar, SidebarHeader, SidebarProvider, SidebarRail } from '@/components/ui/sidebar';
 import type { ReactNode } from 'react';
 import { Package, Search } from 'lucide-react';
+import { DesignFileMap } from '@/constants/menuMaps';
 
 type LayoutProps = {
   children: ReactNode;
 };
 
-export const DesignFileMap = {
-  "command-pattern": "命令模式",
-  "factory-pattern": "工厂模式",
-  "middleware-pattern": "中间件模式",
-  "mixin-pattern": "混合模式",
-  "module-pattern": "模块模式",
-  "observer-pattern": "观察者模式",
-  "prototype-pattern": "原型模式",
-  "singleton-pattern": "单例模式",
-}
+
 
 function Layout({ children }: LayoutProps) {
     const menuData = [

@@ -3,29 +3,11 @@ import { Input } from '@/components/ui/input';
 import { Sidebar, SidebarHeader, SidebarProvider, SidebarRail } from '@/components/ui/sidebar';
 import type { ReactNode } from 'react';
 import { Package, Search } from 'lucide-react';
+import { JSFileMap } from '@/constants/menuMaps';
 
 type LayoutProps = {
   children: ReactNode;
 };
-
-export const JSFileMap = {
-  "array": "数组方法",
-  "bind-this": "this绑定",
-  "bom": "浏览器对象模型",
-  "copy": "深拷贝与浅拷贝",
-  "create-object": "创建对象的方法",
-  "digital-accuracy": "数字精度",
-  "dom": "文档对象模型",
-  "event-loop": "JS 事件循环",
-  "local-storage": "数组方法",
-  "object-vs-map": "对象与 Map 的区别",
-  "object": "对象方法",
-  "prototype": "原型与继承",
-  "set-vs-map": "Set 与 Map 的区别",
-  "web-worker": "Web 后台线程",
-  "performance": "Performance API",
-  "fetch": "fetch请求"
-}
 
 function Layout({ children }: LayoutProps) {
     const menuData = [
